@@ -10,11 +10,11 @@ const Post = db.define('post', {
     type: Sequelize.TEXT
   },
   latitude: {
-    type: Sequelize.DOUBLE,
+    type: Sequelize.FLOAT,
     //allowNull: false
   },
   longitude: {
-    type: Sequelize.DOUBLE,
+    type: Sequelize.FLOAT,
     //allowNull: false
   },
   category: {
