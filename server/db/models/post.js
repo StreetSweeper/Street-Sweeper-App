@@ -17,10 +17,12 @@ const Post = db.define('post', {
     type: Sequelize.DOUBLE,
     //allowNull: false
   },
+  category: {
+    type: Sequelize.STRING
+  },
   isCritical: {
     type: Sequelize.BOOLEAN,
     defaultValue: false
-
   }
 })
 

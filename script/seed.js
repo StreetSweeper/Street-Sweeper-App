@@ -3,18 +3,6 @@
 const db = require('../server/db')
 const {User, Post} = require('../server/db/models')
 
-/**
- * Welcome to the seed file! This seed file uses a newer language feature called...
- *
- *                  -=-= ASYNC...AWAIT -=-=
- *
- * Async-await is a joy to use! Read more about it in the MDN docs:
- *
- * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function
- *
- * Now that you've got the main idea, check it out in practice below!
- */
-
 async function seed() {
   await db.sync({force: true})
   console.log('db synced!')
@@ -26,24 +14,18 @@ async function seed() {
   ])
 
   const posts = await Promise.all([
-    Post.create({upvote: '-12', text: 'The sun is too bright', latitude: 100.32, longitude: 55.89, isCritical: false}),
-    Post.create({upvote: '3', text: 'Pothole!', latitude: 120.32, longitude: 15.89, isCritical: false}),
-    Post.create({upvote: '5', text: 'My hous is on fire', latitude: -45.34, longitude: -55.89, isCritical: true})
+    Post.create({upvote: '-12', text: 'The sun is too bright', latitude: 100.32, longitude: 55.89, isCritical: false, category: 'scenery'}),
+    Post.create({upvote: '3', text: 'Pothole!', latitude: 120.32, longitude: 15.89, isCritical: false, category: 'roadwork'}),
+    Post.create({upvote: '5', text: 'My house is on fire', latitude: -45.34, longitude: -55.89, isCritical: true, category: 'housing'})
   ])
 
-  // Wowzers! We can even `await` on the right-hand side of the assignment operator
-  // and store the result that the promise resolves to in a variable! This is nice!
-  console.log(`seeded ${users.length} users`)
-  console.log(`seeded successfully`)
+  console.log(`seeded ${posts.length} postsjcsdknjksn`)
+  console.log(`seeded succsduicdbiucbebdlewjessfully`)
 }
 
-// Execute the `seed` function, IF we ran this module directly (`node seed`).
-// `Async` functions always return a promise, so we can use `catch` to handle
-// any errors that might occur inside of `seed`.
 if (module === require.main) {
   seed()
     .then(() => {
-      // `finally` is like then + catch. It runs no matter what.
       console.log('closing db connection')
       db.close()
       console.log('db connection closed')
@@ -52,14 +34,7 @@ if (module === require.main) {
       console.error(err)
       process.exitCode = 1
     })
-
-  /*
-   * note: everything outside of the async function is totally synchronous
-   * The console.log below will occur before any of the logs that occur inside
-   * of the async function
-   */
   console.log('seeding...')
 }
 
-// we export the seed function for testing purposes (see `./seed.spec.js`)
 module.exports = seed
