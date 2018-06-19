@@ -3,12 +3,12 @@ const {Post} = require('../db/models')
 module.exports = router
 
 router.get('/critical', (req, res, next) => {
-  User.findAll({
+  Post.findAll({
     where: {
       isCritical: true,
     }
   })
-    .then(users => res.json(users))
+    .then(posts => res.json(posts))
     .catch(next)
 })
 
@@ -22,7 +22,7 @@ const halfMile = 1 / 69 / 2;
 router.get('/location', (req, res, next) => {
   const lat = req.body.lat
   const long = req.body.long
-  User.findAll({
+  Post.findAll({
     where: {
       latitude: {
         $contains: [lat - halfMile, lat + halfMile]
@@ -37,7 +37,7 @@ router.get('/location', (req, res, next) => {
 })
 
 router.get('/category/:type', (req, res, next) => {
-  User.findAll({
+  Post.findAll({
     where: {
       category: req.params.type,
     }
