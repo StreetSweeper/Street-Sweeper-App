@@ -6,7 +6,7 @@ const Post = db.define('post', {
     type: Sequelize.INTEGER,
     defaultValue: 0
   },
-  postText: {
+  text: {
     type: Sequelize.TEXT
   },
   latitude: {
@@ -16,7 +16,6 @@ const Post = db.define('post', {
   longitude: {
     type: Sequelize.DOUBLE,
     //allowNull: false
-
   },
   isCritical: {
     type: Sequelize.BOOLEAN,
